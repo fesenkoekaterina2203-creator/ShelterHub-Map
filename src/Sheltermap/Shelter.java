@@ -26,7 +26,6 @@ public class Shelter {
                     animal.getAge() + " лет");
         }
     }
-
     public int getTotalCount() {
         return animals.size();
     }
