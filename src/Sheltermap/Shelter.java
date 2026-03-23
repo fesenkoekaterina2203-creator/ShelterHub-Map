@@ -2,6 +2,7 @@ package Sheltermap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class Shelter {
@@ -39,13 +40,13 @@ public class Shelter {
     }
         public void findKidsFriendly () {
             System.out.println("\n=== ДРУЖИТ С ДЕТЬМИ ===");
-            for (Animal animal : animals) {
-                if (animal.getTemperament().contains("дети-да")) {
-                    System.out.println("✓ " + animal.getName() + " (" + animal.getType() + ")");
-                }
-            }
+            animals.stream()
+                    .filter( a -> a.getTemperament().toLowerCase().contains("дружелюбный") ||
+                            a.getTemperament().toLowerCase().contains("спокойный") )
+                    .map( a -> a.getName() + " (" + a.getType() + ")" )
+                    .forEach( строка -> System.out.println("✓ " + строка) );
+        }
 
 
         }
 
-    }
